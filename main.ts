@@ -1,11 +1,11 @@
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
     game.over(false)
 })
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    MaggieLucy.vy = -200
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     startNextLevel()
-})
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    MaggieLucy.vy = -200
 })
 function startNextLevel () {
     for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
@@ -13,31 +13,34 @@ function startNextLevel () {
     }
     currentLevel += 1
     if (currentLevel == 1) {
-        scene.setBackgroundColor(0)
+        scene.setBackgroundColor(9)
         tiles.setTilemap(tilemap`level1`)
     } else if (currentLevel == 2) {
-        scene.setBackgroundColor(0)
+        scene.setBackgroundColor(6)
         tiles.setTilemap(tilemap`level2`)
     } else if (currentLevel == 3) {
-        scene.setBackgroundColor(0)
+        scene.setBackgroundColor(8)
         tiles.setTilemap(tilemap`level3`)
     } else if (currentLevel == 4) {
-        scene.setBackgroundColor(0)
+        scene.setBackgroundColor(5)
         tiles.setTilemap(tilemap`level4`)
     } else if (currentLevel == 5) {
-        scene.setBackgroundColor(0)
+        scene.setBackgroundColor(10)
         tiles.setTilemap(tilemap`level5`)
     } else {
         game.over(true)
     }
     tiles.placeOnRandomTile(MaggieLucy, assets.tile`myTile3`)
     for (let value2 of tiles.getTilesByType(assets.tile`myTile4`)) {
-        MyEnemy = sprites.create(assets.tile`myTile5`, SpriteKind.Player)
+        MyEnemy = sprites.create(assets.tile`myTile5`, SpriteKind.Enemy)
         tiles.placeOnTile(MyEnemy, value2)
-        MyEnemy.follow(MaggieLucy, 30)
+        MyEnemy.follow(MaggieLucy, 70)
     }
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
+    game.over(false)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
     game.over(false)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -73,4 +76,5 @@ MaggieLucy.ay = 500
 controller.moveSprite(MaggieLucy, 100, 0)
 scene.cameraFollowSprite(MaggieLucy)
 info.setLife(3)
-startNextLevel()
+tiles.setTilemap(tilemap`level7`)
+tiles.placeOnRandomTile(MaggieLucy, assets.tile`myTile3`)
