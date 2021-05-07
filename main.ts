@@ -1,5 +1,5 @@
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
-    game.over(false)
+    info.changeLifeBy(-1)
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     MaggieLucy.vy = -200
@@ -34,11 +34,11 @@ function startNextLevel () {
     for (let value2 of tiles.getTilesByType(assets.tile`myTile4`)) {
         MyEnemy = sprites.create(assets.tile`myTile5`, SpriteKind.Enemy)
         tiles.placeOnTile(MyEnemy, value2)
-        MyEnemy.follow(MaggieLucy, 70)
+        MyEnemy.follow(MaggieLucy, 30)
     }
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
-    game.over(false)
+    info.changeLifeBy(-1)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
     game.over(false)
