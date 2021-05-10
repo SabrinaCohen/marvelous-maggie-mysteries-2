@@ -3,6 +3,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, l
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     MaggieLucy.vy = -200
+    MaggieLucy.vy = 0
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     startNextLevel()
