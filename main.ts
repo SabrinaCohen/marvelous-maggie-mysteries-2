@@ -11,6 +11,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     startNextLevel()
+    music.magicWand.play()
 })
 function startNextLevel () {
     for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
@@ -39,7 +40,7 @@ function startNextLevel () {
     for (let value2 of tiles.getTilesByType(assets.tile`myTile4`)) {
         MyEnemy = sprites.create(assets.tile`myTile5`, SpriteKind.Enemy)
         tiles.placeOnTile(MyEnemy, value2)
-        MyEnemy.follow(MaggieLucy, 30)
+        MyEnemy.follow(MaggieLucy, 70)
     }
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
