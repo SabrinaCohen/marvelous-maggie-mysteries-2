@@ -1,9 +1,11 @@
+namespace SpriteKind {
+    export const Currency = SpriteKind.create()
+}
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
     info.changeLifeBy(-1)
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     MaggieLucy.vy = -200
-    MaggieLucy.vy = 0
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     startNextLevel()
